@@ -9,38 +9,44 @@ C++ lets us program with _objects_. We describe objects in C++ by declaring and 
 Here is a sample header file <tt>Point.h</tt> that describes an object that represents a point in two-dimensional Euclidean space:
 
 ```c++
-// A 2-dimensional point class!
+// A 3-dimensional point class!
 // Coordinates are double-precision floating point.
+
+#ifndef __POINT_H
+#define __POINT_H
+
 class Point {
 
 private:
-    double x;
-    double y;
+    double x, y, z;
 
 public:
     // Constructors
     Point();                      // default constructor
-    Point(double x, double y);    // two-argument constructor
-
-    // Destructor
-    ~Point();
+    Point(double inX, double inY, double inZ);    // 3-argument constructor
 
     // Mutator methods
-    void setX(double newX);
-    void setY(double newY);
+    void setX(double newX); //Sets the X coordinate of the point
+    void setY(double newY); //Sets the Y coordinate of the point
+    void setZ(double newZ); //Sets the Z coordinate of the point
 
     // Accessor methods
-    double getX() const;
-    double getY() const;
+    double getX() const; //Gets the x coordinate of the point;
+    double getY() const; //Gets the y coordinate of the point;
+    double getZ() const; //Gets the z coordinate of the point;
+    double distanceTo(const Point &point2) const;
+
 
 };
+
+#endif // __POINT_H
 ```
 
 We can _instantiate_, or create an instance of, our class anywhere in the rest of our code by calling any of the constructors we have defined:
 
 ```
 Point myPoint;            // Calls Point::Point(). Notice the lack of parentheses!
-Point myOtherPoint(5, 3); // Calls two-argument constructor Point::Point(double, double). Notice auto type conversion!
+Point myOtherPoint(5, 3, 2); // Calls three-argument constructor Point::Point(double, double). Notice auto type conversion!
 ```
 
 ### Your Task
